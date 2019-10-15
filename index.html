@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="cz">
+<head>
+    <meta charset="UTF-8">
+    <title>Svátky</title>
+    <script>
+        function nactiSvatek() {
+            fetch("http://localhost:7777/svatky").then(function(response) {
+                response.text().then(function(text) {
+                    let obj = JSON.parse(text);
+                    document.getElementById("datum").innerHTML = obj.datum;
+                    document.getElementById("svatek").innerHTML = obj.svatek;
+                });
+            });
+        }
+    </script>
+</head>
+<body onload="nactiSvatek()">
+
+Dnes je...<b id="datum"></b> a svátek má <b id="svatek">...</b>.
+
+</body>
+</html>
